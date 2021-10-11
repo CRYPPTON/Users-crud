@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  wsAddress: 'http://dev.qposoft.com:60000/qpo-jr/api/',
   production: false
 };
 
