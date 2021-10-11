@@ -5,7 +5,8 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
-  }
+  },
+  { path: '', redirectTo: '/users', pathMatch: 'full' }
 ];
 
 @NgModule({
