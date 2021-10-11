@@ -6,7 +6,7 @@ import { environment } from '../../../../environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class CoreApiService {
+export abstract class CoreApiService {
 
     public readonly WS_ADDRESS = environment.wsAddress;
 
