@@ -1,34 +1,57 @@
+<form>
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input
+      #searchText
+      type="text"
+      matInput
+      autocomplete="off"
+      (keyup)="onSearch(searchText.value)"
+    />
+    <button
+      *ngIf="searchText.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="searchText.value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="users" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataUsers" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
       <td mat-cell *matCellDef="let user">{{ user.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
       <td mat-cell *matCellDef="let user">{{ user.email }}</td>
     </ng-container>
 
     <ng-container matColumnDef="created">
-      <th mat-header-cell *matHeaderCellDef>created</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>created</th>
       <td mat-cell *matCellDef="let user">{{ user.created }}</td>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Action</th>
-      <td mat-cell *matCellDef="let user">
-        {{ user.action }}
-      </td>
+      <td mat-cell *matCellDef="let user"></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   <mat-paginator
+    [length]="totalUsersNumber"
+    [pageSize]="params.pageSize"
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
     aria-label="Select page of users list"
+    (page)="setPage($event)"
   >
   </mat-paginator>
 </div>
