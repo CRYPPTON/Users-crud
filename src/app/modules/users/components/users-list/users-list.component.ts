@@ -47,8 +47,9 @@ export class UsersListComponent implements OnInit, AfterViewInit {
 
   onSearch(searchText: string) {
     if (searchText.trim() !== this.params.search) {
-      this.params.search = searchText.trim();
-
+      this.params.search = searchText.trim();    
+      // set first page
+      this.paginator.firstPage();
       this.getUsersFromServer();
     }
     return;
