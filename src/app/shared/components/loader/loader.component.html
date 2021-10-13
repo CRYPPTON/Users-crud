@@ -1,0 +1,5 @@
+<!-- <mat-spinner *ngIf="loaderService.showLoader$ | async"></mat-spinner> -->
+<div *ngIf="(loaderService.showLoader$ | async)" class="overlay">
+    <mat-progress-spinner class="spinner" color='primary' mode='indeterminate' value=25>
+    </mat-progress-spinner>
+  </div>

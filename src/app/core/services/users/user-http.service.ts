@@ -24,12 +24,14 @@ export class UserHttpService extends CoreApiService {
    *
    * @param params
    *
-   * @returns Users from page of index
+   * @returns Get users from server.
    */
   public getUsers(params: ParamForReqSource): Observable<LaravelHttpPaginationResponse<User[]>> {
     return this.get<LaravelHttpPaginationResponse<User[]>>('users', params);
   }
 
+  public updateUser(id: number, data: User): Observable<LaravelBaseHttpResponse<User>> {
+    return this.put<LaravelBaseHttpResponse<User>>(`users/${id}`, data);
+  }
+
 }
-
-
