@@ -1,4 +1,4 @@
-import { LaravelBaseHttpResponse } from "./laravel-base-http-response.model";
+import { LaravelBaseHttpResponse } from './laravel-base-http-response.model';
 
 export interface LaravelHttpPaginationResponse<T> extends LaravelBaseHttpResponse<T> {
     links: Record<string, unknown>;
