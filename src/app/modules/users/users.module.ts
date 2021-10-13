@@ -6,6 +6,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     UsersListComponent

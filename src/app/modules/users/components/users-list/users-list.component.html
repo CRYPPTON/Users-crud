@@ -1,24 +1,27 @@
-<form>
+
   <mat-form-field>
     <mat-label>Search</mat-label>
     <input
       #searchText
       type="text"
+      name="search"
       matInput
       autocomplete="off"
-      (keyup)="onSearch(searchText.value)"
+      (keyup)="onSearch()"
+      [(ngModel)]="params.search"
     />
     <button
       *ngIf="searchText.value"
       matSuffix
       mat-icon-button
       aria-label="Clear"
-      (click)="searchText.value = ''"
-    >
+      (click)="onClear()"
+      >
+      <!-- (click)="onSearch(searchText.value = '')"  -->
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-</form>
+
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataUsers" matSort class="mat-elevation-z8">

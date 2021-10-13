@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { UserHttpService } from '@app-services';
 import { User } from '@app-models';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -45,14 +45,18 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.getUsersFromServer();
   }
 
-  onSearch(searchText: string) {
-    if (searchText.trim() !== this.params.search) {
-      this.params.search = searchText.trim();    
-      // set first page
-      this.paginator.firstPage();
-      this.getUsersFromServer();
-    }
-    return;
+  onSearch() {
+    if (this.params.search !== this.params.search.trim()) { return; };
+
+    // set first page
+    this.paginator.firstPage();
+    this.getUsersFromServer();
+  }
+
+  onClear() {
+    this.params.search = '';
+    this.paginator.firstPage();
+    this.getUsersFromServer();
   }
 
   getUsersFromServer() {
