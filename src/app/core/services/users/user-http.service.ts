@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '@app-models';
 import { CoreApiService } from '../http/core-api.service';
-import { LaravelHttpResponse } from 'src/app/shared/models/Http';
+import { LaravelBaseHttpResponse, LaravelHttpPaginationResponse } from 'src/app/shared/models/Http';
 import { ParamForReqSource } from '@app-models';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class UserHttpService extends CoreApiService {
     super(http);
   }
 
-  public getSingleUserById(id: number): Observable<User> {
-    return this.get<User>(`users/${id}`);
+  public getSingleUserById(id: number): Observable<LaravelBaseHttpResponse<User>> {
+    return this.get<LaravelBaseHttpResponse<User>>(`users/${id}`);
   }
 
   /**
@@ -26,8 +26,8 @@ export class UserHttpService extends CoreApiService {
    *
    * @returns Users from page of index
    */
-  public getUsers(params: ParamForReqSource): Observable<LaravelHttpResponse<User[]>> {
-    return this.get<LaravelHttpResponse<User[]>>('users', params);
+  public getUsers(params: ParamForReqSource): Observable<LaravelHttpPaginationResponse<User[]>> {
+    return this.get<LaravelHttpPaginationResponse<User[]>>('users', params);
   }
 
 }

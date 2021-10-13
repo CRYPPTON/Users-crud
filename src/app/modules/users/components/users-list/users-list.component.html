@@ -26,18 +26,18 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataUsers" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >Name</th>
+      <td mat-cell *matCellDef="let user" [routerLink]="user.id" >{{ user.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-      <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+      <td mat-cell *matCellDef="let user" [routerLink]="user.id">{{ user.email }}</td>
     </ng-container>
 
     <ng-container matColumnDef="created">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>created</th>
-      <td mat-cell *matCellDef="let user">{{ user.created }}</td>
+      <td mat-cell *matCellDef="let user" [routerLink]="user.id">{{ user.created }}</td>
     </ng-container>
 
     <ng-container matColumnDef="action">
