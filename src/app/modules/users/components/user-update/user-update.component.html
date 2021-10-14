@@ -1,17 +1,48 @@
 <div>
-  <h2>Update-User</h2>
+  <h2>Update User</h2>
   <div>
-    <form [formGroup]="newUserForm">
-    <mat-form-field appearance="fill" >
-      <mat-label>Name</mat-label>
-      <input type="text" matInput formControlName="name"/>
-    </mat-form-field>
+    <div [formGroup]="newUserForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="name"
+          required
+          autocomplete="off"
+        />
+        <mat-error *ngIf="!newUserForm.controls.name.valid"
+          >Enter Name</mat-error
+        >
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input type="email" matInput formControlName="email"/>
-    </mat-form-field>
-</form>
-  
-  <button mat-raised-button (click)="onUpdate()" color="primary">Update</button>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          autocomplete="off"
+        />
+        <mat-error *ngIf="newUserForm.controls.email.hasError('pattern')"
+          >InValid email</mat-error
+        >
+        <mat-error *ngIf="newUserForm.controls.email.hasError('ExistingEmail')">
+          {{ newUserForm.controls.email.getError("ExistingEmail") }}
+        </mat-error>
+        <mat-error *ngIf="newUserForm.controls.email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      {{ newUserForm.controls.email.errors | json }}
+    </div>
+    <button
+      mat-raised-button
+      (click)="onUpdate()"
+      color="primary"
+      [disabled]="!newUserForm.valid"
+    >
+      Update
+    </button>
+  </div>
 </div>

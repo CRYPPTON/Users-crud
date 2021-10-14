@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { UserHttpService } from '@app-services';
 import { User } from '@app-models';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -58,7 +58,6 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.paginator.firstPage();
     this.getUsersFromServer();
   }
-
   getUsersFromServer() {
     this.userHttp.getUsers(this.params).subscribe(
       (request) => {
