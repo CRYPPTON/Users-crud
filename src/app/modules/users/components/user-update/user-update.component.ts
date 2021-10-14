@@ -43,7 +43,7 @@ export class UserUpdateComponent implements OnInit {
     this.userHttp.updateUser(this.user.id, this.user).subscribe(
       (res) => {
         this.router.navigate(['/users']);
-        // console.log(res);
+        // console.log('')
       },
       (err) => {
         this.newUserForm.controls.email.setErrors({ ExistingEmail: err.error.message });
