@@ -1,5 +1,6 @@
-<form [formGroup]="form">
-    <mat-form-field appearance="fill">
+<div class="container d-flex justify-content-center">
+  <form [formGroup]="form" class="d-flex col-md-3 flex-column">
+    <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input
         type="text"
@@ -8,19 +9,12 @@
         required
         autocomplete="off"
       />
-      <mat-error *ngIf="!form.controls.name.valid"
-        >Enter Name</mat-error
-      >
+      <mat-error *ngIf="!form.controls.name.valid">Enter Name</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input
-        type="email"
-        matInput
-        formControlName="email"
-        autocomplete="off"
-      />
+      <input type="email" matInput formControlName="email" autocomplete="off" />
       <mat-error *ngIf="form.controls.email.hasError('pattern')"
         >InValid email</mat-error
       >
@@ -32,3 +26,4 @@
       </mat-error>
     </mat-form-field>
   </form>
+</div>
