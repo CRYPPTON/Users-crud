@@ -1,0 +1,40 @@
+<h1>Create User</h1>
+<div>
+  <form [formGroup]="createUserForm" (ngSubmit)="onCreateUser()">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        matInput
+        required
+        autocomplete="off"
+        formControlName="name"
+      />
+      <mat-error *ngIf="!createUserForm.controls.name.valid"
+        >Enter Name</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        required
+        autocomplete="off"
+        formControlName="email"
+      />
+      <mat-error *ngIf="createUserForm.controls.email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="createUserForm.controls.email.hasError('pattern')"
+        >incorrect email</mat-error
+      >
+      <mat-error *ngIf="createUserForm.controls.email.hasError('ExistingEmail')">
+        {{ createUserForm.controls.email.getError("ExistingEmail") }}
+      </mat-error>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary" type="submit" >Submit</button>
+      </div>
+    </form>
+</div>

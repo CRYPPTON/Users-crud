@@ -21,6 +21,8 @@
   </button>
 </mat-form-field>
 
+<button mat-raised-button color="primary" (click)="onNavigateToCreateUser()">Create New</button>
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataUsers" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="name">
