@@ -46,7 +46,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   }
 
   onDelete(id: number) {
-    let confirmDelete = confirm("Do you want to delete user?");
+    const confirmDelete = confirm('Do you want to delete user?');
     if (confirmDelete) {
       this.userHttp.deleteUser(id).subscribe(
         () => {
@@ -55,7 +55,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
           }
           this.getUsersFromServer();
         }
-      )
+      );
     }
   }
 
@@ -72,7 +72,6 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.paginator.firstPage();
     this.getUsersFromServer();
   }
-  
   getUsersFromServer() {
     this.userHttp.getUsers(this.params).subscribe(
       (request) => {
