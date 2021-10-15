@@ -7,12 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
     UsersListComponent,
     UserUpdateComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    UserFormComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserHttpService } from 'src/app/core/services';
+import { UserFromService, UserHttpService } from 'src/app/core/services';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
@@ -10,27 +10,18 @@ import { Router } from '@angular/router';
 })
 export class CreateUserComponent implements OnInit {
 
-  createUserForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required
-    ]),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$'),
-    ]),
-  });
+  createUserForm: FormGroup;
 
-  constructor(private userHttp: UserHttpService, private router: Router) { }
+  constructor(private userHttp: UserHttpService, private router: Router, private userFormService: UserFromService) {
+    this.createUserForm = this.userFormService.getEmptyForm();
+  }
 
   ngOnInit(): void {
   }
 
   onCreateUser() {
-
     if (this.createUserForm.valid) {
-      const userName = this.createUserForm.controls.name.value;
-      const userEmail = this.createUserForm.controls.email.value;
-      this.userHttp.createUser(userName, userEmail).subscribe(
+      this.userHttp.createUser(this.createUserForm.value).subscribe(
         (res) => {
           this.router.navigate(['/users']);
         },
@@ -38,10 +29,6 @@ export class CreateUserComponent implements OnInit {
           this.createUserForm.controls.email.setErrors({ ExistingEmail: err.error.message });
         }
       );
-      console.log(this.createUserForm.controls.name.value);
-      console.log(this.createUserForm.controls.email.value);
-    } else {
-      console.log('invalid from');
     }
   }
 }
