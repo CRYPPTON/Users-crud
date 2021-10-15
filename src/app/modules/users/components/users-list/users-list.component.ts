@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { UserHttpService } from '@app-services';
 import { User } from '@app-models';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -45,6 +45,20 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.getUsersFromServer();
   }
 
+  onDelete(id: number) {
+    const confirmDelete = confirm('Do you want to delete user?');
+    if (confirmDelete) {
+      this.userHttp.deleteUser(id).subscribe(
+        () => {
+          if (this.dataUsers.data.length === 1 && this.params.page !== 1) {
+            this.params.page--;
+          }
+          this.getUsersFromServer();
+        }
+      );
+    }
+  }
+
   onSearch() {
     if (this.params.search !== this.params.search.trim()) { return; };
 
@@ -58,7 +72,6 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.paginator.firstPage();
     this.getUsersFromServer();
   }
-
   getUsersFromServer() {
     this.userHttp.getUsers(this.params).subscribe(
       (request) => {
