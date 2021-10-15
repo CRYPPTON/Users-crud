@@ -39,10 +39,10 @@ export class UserHttpService extends CoreApiService {
   }
 
   /**
-   * 
-   * @param userName 
-   * @param userEmail 
-   * @returns 
+   *
+   * @param userName
+   * @param userEmail
+   * @returns
    */
   public createUser(userName: string, userEmail: string): Observable<LaravelBaseHttpResponse<User>> {
     return this.post<LaravelBaseHttpResponse<User>>(`users`, {name: userName, email: userEmail});
