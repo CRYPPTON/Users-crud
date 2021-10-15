@@ -45,6 +45,20 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.getUsersFromServer();
   }
 
+  onDelete(id: number) {
+    let confirmDelete = confirm("Do you want to delete user?");
+    if (confirmDelete) {
+      this.userHttp.deleteUser(id).subscribe(
+        () => {
+          if (this.dataUsers.data.length === 1 && this.params.page !== 1) {
+            this.params.page--;
+          }
+          this.getUsersFromServer();
+        }
+      )
+    }
+  }
+
   onSearch() {
     if (this.params.search !== this.params.search.trim()) { return; };
 
@@ -58,6 +72,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.paginator.firstPage();
     this.getUsersFromServer();
   }
+  
   getUsersFromServer() {
     this.userHttp.getUsers(this.params).subscribe(
       (request) => {
