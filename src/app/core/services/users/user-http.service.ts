@@ -30,12 +30,22 @@ export class UserHttpService extends CoreApiService {
     return this.get<LaravelHttpPaginationResponse<User[]>>('users', params);
   }
 
-  public updateUser(id: number, data: User): Observable<LaravelBaseHttpResponse<User>> {
-    return this.put<LaravelBaseHttpResponse<User>>(`users/${id}`, data);
+  public updateUser(id: number, user: User): Observable<LaravelBaseHttpResponse<User>> {
+    return this.put<LaravelBaseHttpResponse<User>>(`users/${id}`, user);
   }
 
   public deleteUser(id: number): Observable<LaravelBaseHttpResponse<User>> {
     return this.delete<LaravelBaseHttpResponse<User>>(`users/${id}`);
+  }
+
+  /**
+   *
+   * @param userName
+   * @param userEmail
+   * @returns
+   */
+  public createUser(user: User): Observable<LaravelBaseHttpResponse<User>> {
+    return this.post<LaravelBaseHttpResponse<User>>(`users`, user);
   }
 
 }

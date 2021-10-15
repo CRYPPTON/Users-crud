@@ -1,0 +1,15 @@
+<div>
+    <h2>Create User</h2>
+    <div>
+      <app-user-form [form]='createUserForm'></app-user-form>
+      <button
+        mat-raised-button
+        (click)="onCreateUser()"
+        color="primary"
+        [disabled]="!createUserForm.valid"
+      >
+        Create
+      </button>
+    </div>
+  </div>
+  

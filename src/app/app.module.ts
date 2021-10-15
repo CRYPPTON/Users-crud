@@ -12,7 +12,7 @@ import { LoaderInterceptorInterceptor } from './core/interceptors/loader-interce
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

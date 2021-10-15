@@ -5,6 +5,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ParamForReqSource } from '@app-models';
 import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class UsersListComponent implements OnInit, AfterViewInit {
 
-  constructor(private userHttp: UserHttpService) { }
+  constructor(private userHttp: UserHttpService, private router: Router ) { }
 
   users: User[] = [];
   displayedColumns: string[] = ['name', 'email', 'created', 'action'];
@@ -80,5 +81,9 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         this.dataUsers.data = request.data;
       }
     );
+  }
+
+  onNavigateToCreateUser() {
+    this.router.navigate(['users/create']);
   }
 }
