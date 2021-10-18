@@ -92,7 +92,10 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     );
   }
 
-  onUpdate(user: User) {
+  onUpdate(event: MouseEvent ,user: User) {
+
+    event.stopPropagation();
+
     const dialogRef = this.dialog.open(UserUpdateComponent, { data: user });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

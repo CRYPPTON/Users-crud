@@ -70,7 +70,7 @@
         class="clickable-user-row"
         mat-row
         *matRowDef="let row; columns: displayedColumns"
-        (click)="onUpdate(row)"
+        (click)="onUpdate($event,row)"
       ></tr>
     </table>
     <div>
