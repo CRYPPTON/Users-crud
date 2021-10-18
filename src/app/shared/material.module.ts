@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     imports: [
@@ -20,7 +20,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatFormFieldModule,
         MatIconModule,
         MatSortModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatDialogModule
     ],
     exports: [
         MatSliderModule,
@@ -31,7 +32,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatFormFieldModule,
         MatIconModule,
         MatSortModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatDialogModule
     ]
 })
 

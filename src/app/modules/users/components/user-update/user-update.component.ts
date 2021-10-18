@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { UserFromService, UserHttpService } from 'src/app/core/services';
+import { Component, Inject, OnInit } from '@angular/core';
+import { UserFormService, UserHttpService } from 'src/app/core/services';
 import { User } from 'src/app/shared/models';
-import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-update',
@@ -13,29 +12,25 @@ import { FormGroup } from '@angular/forms';
 
 export class UserUpdateComponent implements OnInit {
 
-  userId: number;
-  errorMessageFromServer = '';
-
   updateUserForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private userHttp: UserHttpService, private router: Router,
-    private userFormService: UserFromService) {
+  constructor(
+    private userHttp: UserHttpService,
+    private dialogRef: MatDialogRef<boolean>,
+    private userFormService: UserFormService,
+    @Inject(MAT_DIALOG_DATA) public data: User,
+  ) {
     this.updateUserForm = this.userFormService.getEmptyForm();
   }
 
   ngOnInit(): void {
-    this.userId = +this.route.snapshot.params.id;
-    this.userHttp.getSingleUserById(this.userId).subscribe(
-      (response) => {
-        this.updateUserForm.patchValue(response.data);
-      }
-    );
+    this.updateUserForm.patchValue(this.data);
   }
 
   onUpdate() {
-    this.userHttp.updateUser(this.userId, this.updateUserForm.value).subscribe(
-      (res) => {
-        this.router.navigate(['/users']);
+    this.userHttp.updateUser(this.data.id, this.updateUserForm.value).subscribe(
+      () => {
+        this.dialogRef.close(true);
       },
       (err) => {
         this.updateUserForm.controls.email.setErrors({ ExistingEmail: err.error.message });

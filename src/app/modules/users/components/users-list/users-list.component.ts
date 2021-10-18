@@ -5,7 +5,10 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ParamForReqSource } from '@app-models';
 import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
+import { CreateUserComponent } from '../create-user/create-user.component';
+import { UserUpdateComponent } from '../user-update/user-update.component';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class UsersListComponent implements OnInit, AfterViewInit {
 
-  constructor(private userHttp: UserHttpService, private router: Router ) { }
+  constructor(private userHttp: UserHttpService, private dialog: MatDialog) { }
 
   users: User[] = [];
   displayedColumns: string[] = ['name', 'email', 'created', 'action'];
@@ -46,18 +49,23 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.getUsersFromServer();
   }
 
-  onDelete(id: number) {
-    const confirmDelete = confirm('Do you want to delete user?');
-    if (confirmDelete) {
-      this.userHttp.deleteUser(id).subscribe(
-        () => {
-          if (this.dataUsers.data.length === 1 && this.params.page !== 1) {
-            this.params.page--;
+  onDelete(event: MouseEvent, id: number) {
+
+    event.stopPropagation();
+
+    const dialogRef = this.dialog.open(DeleteUserDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.userHttp.deleteUser(id).subscribe(
+          () => {
+            if (this.dataUsers.data.length === 1 && this.params.page !== 1) {
+              this.params.page--;
+            }
+            this.getUsersFromServer();
           }
-          this.getUsersFromServer();
-        }
-      );
-    }
+        );
+      }
+    });
   }
 
   onSearch() {
@@ -73,6 +81,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     this.paginator.firstPage();
     this.getUsersFromServer();
   }
+
   getUsersFromServer() {
     this.userHttp.getUsers(this.params).subscribe(
       (request) => {
@@ -83,7 +92,21 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     );
   }
 
-  onNavigateToCreateUser() {
-    this.router.navigate(['users/create']);
+  onUpdate(user: User) {
+    const dialogRef = this.dialog.open(UserUpdateComponent, { data: user });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getUsersFromServer();
+      }
+    });
+  }
+
+  onCreate() {
+    const dialogRef = this.dialog.open(CreateUserComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getUsersFromServer();
+      }
+    });
   }
 }
