@@ -8,13 +8,15 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { DeleteUserDialogComponent } from './components/delete-user-dialog/delete-user-dialog.component';
 
 @NgModule({
   declarations: [
     UsersListComponent,
     UserUpdateComponent,
     CreateUserComponent,
-    UserFormComponent
+    UserFormComponent,
+    DeleteUserDialogComponent,
   ],
   imports: [
     CommonModule,

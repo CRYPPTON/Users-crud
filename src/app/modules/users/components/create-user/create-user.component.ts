@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserFromService, UserHttpService } from 'src/app/core/services';
-import { Router } from '@angular/router';
+import { UserFormService, UserHttpService } from 'src/app/core/services';
 import { FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-user',
@@ -12,7 +12,10 @@ export class CreateUserComponent implements OnInit {
 
   createUserForm: FormGroup;
 
-  constructor(private userHttp: UserHttpService, private router: Router, private userFormService: UserFromService) {
+  constructor(
+    private userHttp: UserHttpService, private userFormService: UserFormService,
+    private dialogRef: MatDialogRef<boolean>
+  ) {
     this.createUserForm = this.userFormService.getEmptyForm();
   }
 
@@ -22,11 +25,8 @@ export class CreateUserComponent implements OnInit {
   onCreateUser() {
     if (this.createUserForm.valid) {
       this.userHttp.createUser(this.createUserForm.value).subscribe(
-        (res) => {
-          this.router.navigate(['/users']);
-        },
-        (err) => {
-          this.createUserForm.controls.email.setErrors({ ExistingEmail: err.error.message });
+        () => {
+          this.dialogRef.close(true);
         }
       );
     }
