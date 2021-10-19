@@ -1,7 +1,7 @@
 <div class="container d-flex justify-content-center">
   <form [formGroup]="form" class="d-flex col-md-12 flex-column">
     <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
+      <mat-label>{{ 'form.name' | translate }}</mat-label>
       <input
         type="text"
         matInput
@@ -9,20 +9,20 @@
         required
         autocomplete="off"
       />
-      <mat-error *ngIf="!form.controls.name.valid">Enter Name</mat-error>
+      <mat-error *ngIf="!form.controls.name.valid">{{ 'error.requiredName' | translate }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
+      <mat-label>{{ 'form.email' | translate }}</mat-label>
       <input type="email" matInput formControlName="email" autocomplete="off" />
       <mat-error *ngIf="form.controls.email.hasError('pattern')"
-        >InValid email</mat-error
+        >{{ 'error.InValidEmail' | translate }}</mat-error
       >
       <mat-error *ngIf="form.controls.email.hasError('ExistingEmail')">
         {{ form.controls.email.getError("ExistingEmail") }}
       </mat-error>
       <mat-error *ngIf="form.controls.email.hasError('required')">
-        Email is <strong>required</strong>
+        {{ 'error.requiredEmail' | translate }}
       </mat-error>
     </mat-form-field>
   </form>

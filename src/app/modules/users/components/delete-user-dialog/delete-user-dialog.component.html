@@ -1,8 +1,8 @@
-<h1 mat-dialog-title>Delete User</h1>
+<h1 mat-dialog-title>{{ 'deleteUser.title' | translate }}</h1>
 <div mat-dialog-content class="mat-typography">
-  Do you want to delete user?
+  {{ 'deleteUser.content' | translate }}
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="secondary" (click)="close(false)">Cancel</button>
-  <button mat-raised-button color="primary" (click)="close(true)">Delete</button>
+  <button mat-raised-button color="secondary" (click)="close(false)">{{ 'buttons.cancel' | translate }}</button>
+  <button mat-raised-button color="primary" (click)="close(true)">{{ 'buttons.delete' | translate }}</button>
 </div>
