@@ -1,0 +1,41 @@
+{
+  "buttons": {
+    "save": "Sačuvaj",
+    "create": "Kreiraj",
+    "update": "Ažuriraj",
+    "cancel": "Odbaci",
+    "delete": "Izbriši"
+  },
+  "createUser": {
+    "title": "Kreiraj novog korisnika"
+  },
+  "updateUser": {
+    "title": "Ažuriraj Korisnika"
+  },
+  "deleteUser": {
+    "title": "Brisanje Korisnika",
+    "content": "Da li želite da izbrišete korisnika?"
+  },
+  "form": {
+    "name": "Ime",
+    "email": "Email",
+    "created": "Napravljen",
+    "action": "Uradi",
+    "items per page": "items per page"
+  },
+  "search": "Pretraga",
+  "error": {
+    "InValidEmail": "Neispravan email",
+    "requiredEmail": "Potrebna je email adresa",
+    "requiredName": "Unesite Ime",
+    "NoDataFound": "Nema Pronadjenih Korisnika"
+  },
+  "PAGINATOR": {
+    "ITEMS_PER_PAGE": "Korisnika po strani",
+    "NEXT_PAGE" : "Sledeca strana",
+    "PREVIOUS_PAGE": "Prethodna strana",
+    "LAST_PAGE": "Poslednja strana",
+    "FIRST_PAGE": "Prva strana",
+    "OF_LABEL": "od"
+  }
+}

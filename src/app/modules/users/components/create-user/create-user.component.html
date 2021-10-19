@@ -1,5 +1,7 @@
 <div class="container col-md-12 text-center">
-    <h2>Create User</h2>
+    <h2>
+      {{ 'createUser.title' | translate }}
+    </h2>
     <div>
       <app-user-form [form]='createUserForm'></app-user-form>
       <button
@@ -8,7 +10,7 @@
         color="primary"
         [disabled]="!createUserForm.valid"
       >
-        Create
+        {{ 'buttons.save' | translate}}
       </button>
     </div>
   </div>

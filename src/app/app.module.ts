@@ -5,9 +5,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LoaderInterceptorInterceptor } from './core/interceptors/loader-interceptor.interceptor';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CustromPaginatorIntlService } from './core/services';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+
+
+export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http);
 
 @NgModule({
   declarations: [
@@ -20,11 +27,23 @@ import { LoaderInterceptorInterceptor } from './core/interceptors/loader-interce
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorInterceptor, multi: true },
+    {
+      provide: MatPaginatorIntl,
+      useClass: CustromPaginatorIntlService
+    },
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

@@ -9,7 +9,6 @@ export class LoaderServiceService {
   public showLoader$ = new BehaviorSubject<boolean>(false);
 
   constructor() { }
-
   public show() {
     this.showLoader$.next(true);
   }

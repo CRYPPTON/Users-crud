@@ -1,5 +1,5 @@
 <div class="container col-md-12 text-center">
-  <h2>Update User</h2>
+  <h2>{{ "updateUser.title" | translate }}</h2>
   <div>
     <app-user-form [form]="updateUserForm"></app-user-form>
     <button
@@ -8,7 +8,7 @@
       color="primary"
       [disabled]="!updateUserForm.valid"
     >
-      Update
+      {{ "buttons.update" | translate }}
     </button>
   </div>
 </div>
