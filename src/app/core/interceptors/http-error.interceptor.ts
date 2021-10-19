@@ -36,8 +36,9 @@ intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEven
 
   private generateErrorMessage(errorObj: LaravelErrorObject): string {
     let output = '';
-    if(errorObj){
+
     for (const key in errorObj) {
+      if(key){
       output+=key+':';
       for (let i = 0; i < errorObj[key].length; i++) {
         output+='<br>'; // new line
