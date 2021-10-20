@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatIconModule,
         MatSortModule,
         MatProgressSpinnerModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSnackBarModule
     ],
     exports: [
         MatSliderModule,
@@ -33,7 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatIconModule,
         MatSortModule,
         MatProgressSpinnerModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSnackBarModule
     ]
 })
 
