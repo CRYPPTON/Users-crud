@@ -37,5 +37,11 @@
     "LAST_PAGE": "Poslednja strana",
     "FIRST_PAGE": "Prva strana",
     "OF_LABEL": "od"
+  },
+  "SUCCESS": {
+    "POST": "Uspesno dodavanje korisnika",
+    "PUT": "Uspesno azuriranje korisnika",
+    "DELETE": "Uspesno brisanje korisnika",
+    "PATCH": "Uspesno azuriranje korisnika"
   }
 }

@@ -37,5 +37,11 @@
     "LAST_PAGE": "Last page",
     "FIRST_PAGE": "First page",
     "OF_LABEL": "of"
+  },
+  "SUCCESS": {
+    "POST": "User is successufully added",
+    "PUT": "User is successufully added",
+    "DELETE": "User is successufully added",
+    "PATCH": "User is successufully added"
   }
 }

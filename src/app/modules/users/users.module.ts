@@ -10,7 +10,6 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { DeleteUserDialogComponent } from './components/delete-user-dialog/delete-user-dialog.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ErrorMessagesFromServerComponent } from '../../shared/components/error-messages-from-server/error-messages-from-server.component';
 
 
 @NgModule({
@@ -20,7 +19,6 @@ import { ErrorMessagesFromServerComponent } from '../../shared/components/error-
     CreateUserComponent,
     UserFormComponent,
     DeleteUserDialogComponent,
-    ErrorMessagesFromServerComponent,
   ],
   imports: [
     CommonModule,

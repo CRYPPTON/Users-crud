@@ -8,27 +8,24 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ErrorMessagesFromServerComponent }
-from 'src/app/shared/components/error-messages-from-server/error-messages-from-server.component';
 import { LaravelErrorObject } from 'src/app/shared/models';
+import { SnackBarService } from '../services';
+import { SnackDataModel } from 'src/app/shared/models/snack-message/snack-data-model';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBarServices: SnackBarService) { }
 
-intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     return next.handle(request)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           let errorMsg = '';
           errorMsg = this.generateErrorMessage(error.error.errors);
-          this.snackBar.openFromComponent(ErrorMessagesFromServerComponent, {
-            data: errorMsg,
-            duration: 5000
-          });
+          const data: SnackDataModel = { message: errorMsg, status: false };
+          this.snackBarServices.openSnack(data);
           return throwError(errorMsg);
         })
       );
@@ -38,14 +35,15 @@ intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEven
     let output = '';
 
     for (const key in errorObj) {
-      if(key){
-      output+=key+':';
-      for (let i = 0; i < errorObj[key].length; i++) {
-        output+='<br>'; // new line
-        output+='&nbsp;&nbsp;&nbsp;'+(i+1)+'. '+errorObj[key][i];
+      if (key) {
+        output += key + ':';
+        for (let i = 0; i < errorObj[key].length; i++) {
+          output += '<br>'; // new line
+          output += '&nbsp;&nbsp;&nbsp;' + (i + 1) + '. ' + errorObj[key][i];
+        }
+        output += '<br>';
       }
-      output+='<br>';
-    }}
+    }
 
     return output;
   }

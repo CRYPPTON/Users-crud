@@ -13,6 +13,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CustromPaginatorIntlService } from './core/services';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { HttpErrorInterceptor } from './core/interceptors';
+import { HttpSuccessInterceptor } from './core/interceptors/http-success.interceptor';
+import { CommonModule } from '@angular/common';
 
 
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http);
@@ -40,6 +42,7 @@ export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(h
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpSuccessInterceptor, multi: true },
     {
       provide: MatPaginatorIntl,
       useClass: CustromPaginatorIntlService
