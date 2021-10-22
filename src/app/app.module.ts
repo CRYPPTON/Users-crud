@@ -16,8 +16,8 @@ import { HttpErrorInterceptor } from './core/interceptors';
 import { HttpSuccessInterceptor } from './core/interceptors/http-success.interceptor';
 import { CommonModule } from '@angular/common';
 
-
 export const httpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http);
+
 
 @NgModule({
   declarations: [

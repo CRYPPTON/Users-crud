@@ -1,0 +1,21 @@
+<header *ngIf="selectedLanguage">
+  <mat-toolbar color="primary">
+    <div class="col-md-11">
+      User Crude app
+    </div>
+    <div class="select col-md-1">
+      <mat-select
+        [(value)]="selectedLanguage"
+        (selectionChange)="langChanged($event)"
+      >
+        <mat-option
+          *ngFor="let language of languages; let i = index"
+          [value]="language"
+          [style.display]="selectedLanguage.code !== language.code ? 'block' : 'none'"
+        >
+          {{ language.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </mat-toolbar>
+</header>

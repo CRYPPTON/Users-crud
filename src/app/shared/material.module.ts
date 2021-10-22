@@ -10,6 +10,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatSortModule,
         MatProgressSpinnerModule,
         MatDialogModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatSelectModule
     ],
     exports: [
         MatSliderModule,
@@ -36,7 +40,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatSortModule,
         MatProgressSpinnerModule,
         MatDialogModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatSelectModule
     ]
 })
 
