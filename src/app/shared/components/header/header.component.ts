@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LanguageServiceService } from 'src/app/core/services';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { AuthService, LanguageServiceService } from 'src/app/core/services';
 import { Language } from '../../models';
 
 @Component({
@@ -12,12 +14,20 @@ export class HeaderComponent implements OnInit {
   public selectedLanguage: Language;
   public otherLanguages: Language[];
   public languages = this.languageService.getLanguages();
+  isAuth: boolean;
 
   constructor(
-    private languageService: LanguageServiceService
+    private languageService: LanguageServiceService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.authService.isAuth.subscribe(
+      (res) => {
+        this.isAuth = res;
+      }
+    );
     this.languageService.setLanguage('sr');
     this.selectedLanguage = this.languageService.getSelectedLanguage();
     this.otherLanguages = this.languageService.getUnselectedLanguages();
@@ -28,6 +38,11 @@ export class HeaderComponent implements OnInit {
     this.selectedLanguage = selectedValue;
     this.languageService.setLanguage(this.selectedLanguage.code);
     this.otherLanguages = this.languageService.getUnselectedLanguages();
+  }
+
+  onLogout() {
+    this.router.navigate(['/auth']);
+    this.isAuth = false;
   }
 
 }
