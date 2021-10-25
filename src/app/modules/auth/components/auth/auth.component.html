@@ -1,0 +1,35 @@
+<div class="container col-md-4 text-center">
+  <h2>Login</h2>
+  <form [formGroup]="form" class="d-flex col-md-12 flex-column">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        required
+      />
+      <mat-error *ngIf="form.controls.email.hasError('pattern')"
+        >Invalid email</mat-error
+      >
+      <mat-error *ngIf="form.controls.email.hasError('required')">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput formControlName="password" required  type="password">
+      <mat-error *ngIf="form.controls.password.hasError('minlength')">
+        Password is required 6 character
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <button
+    [disabled]="!form.valid"
+    mat-raised-button
+    color="primary"
+    (click)="onLogin()"
+  >
+    Login
+  </button>
+</div>

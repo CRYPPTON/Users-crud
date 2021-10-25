@@ -1,9 +1,13 @@
 <header *ngIf="selectedLanguage">
   <mat-toolbar color="primary">
-    <div class="col-md-11">
+    <div class="col-md-9">
       User Crude app
     </div>
-    <div class="select col-md-1">
+    
+      <div class="col-md-2" *ngIf="isAuth">
+        <button mat-raised-button color="warn" (click)="onLogout()">logout</button>
+      </div>
+      <div class="select col-md-3">
       <mat-select
         [(value)]="selectedLanguage"
         (selectionChange)="langChanged($event)"
@@ -18,4 +22,5 @@
       </mat-select>
     </div>
   </mat-toolbar>
+  
 </header>

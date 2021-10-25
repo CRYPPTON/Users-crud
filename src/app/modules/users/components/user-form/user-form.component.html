@@ -16,8 +16,7 @@
       <mat-label>{{ 'form.email' | translate }}</mat-label>
       <input type="email" matInput formControlName="email" autocomplete="off" />
       <mat-error *ngIf="form.controls.email.hasError('pattern')"
-        >{{ 'error.InValidEmail' | translate }}</mat-error
-      >
+        >{{ 'error.InValidEmail' | translate }}</mat-error>
       <mat-error *ngIf="form.controls.email.hasError('ExistingEmail')">
         {{ form.controls.email.getError("ExistingEmail") }}
       </mat-error>
