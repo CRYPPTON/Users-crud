@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from  'rxjs';
 import { AuthService, LanguageServiceService } from 'src/app/core/services';
 import { Language } from '../../models';
 
@@ -43,6 +43,7 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     this.router.navigate(['/auth']);
     this.isAuth = false;
+    this.authService.logout();
   }
 
 }

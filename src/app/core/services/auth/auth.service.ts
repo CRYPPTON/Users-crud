@@ -6,13 +6,28 @@ import { User } from 'src/app/shared/models';
   providedIn: 'root'
 })
 export class AuthService {
+  public static AUTHKEY = 'authKey';
   user = {} as User;
   isAuth = new BehaviorSubject<boolean>(false);
 
-  constructor() { }
+  public get loggedIn(): boolean {
+    const data = localStorage.getItem(AuthService.AUTHKEY);
+    return data ? true : false;
+  }
+
+  public set loggedIn(value: boolean) {
+    if (value) {
+      localStorage.setItem(AuthService.AUTHKEY, 'QPO-No-Delay');
+    } else {
+      localStorage.removeItem(AuthService.AUTHKEY);
+    }
+  }
+
+  constructor() {
+    this.isAuth.next(this.loggedIn);
+  }
 
   public login(email: string, password: string): Observable<User | null> {
-
 
     this.user.id = 1;
     this.user.email = 'name@name.com';
@@ -21,17 +36,16 @@ export class AuthService {
 
     if (email === this.user.email && password === '123') {
       this.isAuth.next(true);
+      this.loggedIn = true;
+
       return of(this.user);
     } else {
       return of(null);
     }
   }
 
-  isAuthenticated(): boolean {
-    return this.isAuth.value;
-  }
-
   public logout() {
+    this.loggedIn = false;
     this.isAuth.next(false);
   }
 
