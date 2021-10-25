@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '@app-models';
 import { CoreApiService } from '../http/core-api.service';
 import { LaravelBaseHttpResponse, LaravelHttpPaginationResponse } from 'src/app/shared/models/Http';
-import { ParamForReqSource } from '@app-models';
+import { UserListStateParams } from '@app-models';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UserHttpService extends CoreApiService {
    *
    * @returns Get users from server.
    */
-  public getUsers(params: ParamForReqSource): Observable<LaravelHttpPaginationResponse<User[]>> {
+  public getUsers(params: UserListStateParams): Observable<LaravelHttpPaginationResponse<User[]>> {
     return this.get<LaravelHttpPaginationResponse<User[]>>('users', params);
   }
 
