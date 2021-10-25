@@ -15,6 +15,11 @@ const routes: Routes = [
     canActivate: [NoneAuthGuard]
   },
   {
+    path: 'settings',
+    loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: '', redirectTo: '/auth', pathMatch: 'full',
   }
 ];
