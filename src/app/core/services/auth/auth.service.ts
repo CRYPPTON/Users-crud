@@ -49,4 +49,8 @@ export class AuthService {
     this.isAuth.next(false);
   }
 
+  getAuthToken() {
+      return  localStorage.getItem(AuthService.AUTHKEY);
+  }
+
 }
