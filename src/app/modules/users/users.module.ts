@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { DeleteUserDialogComponent } from './components/delete-user-dialog/delete-user-dialog.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -26,7 +25,6 @@ import { TranslateModule } from '@ngx-translate/core';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslateModule
   ],
 })
 export class UsersModule { }

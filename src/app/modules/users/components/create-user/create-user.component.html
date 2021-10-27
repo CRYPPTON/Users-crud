@@ -1,4 +1,4 @@
-<div class="container col-md-12 text-center">
+<div class="container col-md-12 text-center" [ngClass]="{ 'dark-theme': themeService.isDark }">
     <h2>
       {{ 'createUser.title' | translate }}
     </h2>

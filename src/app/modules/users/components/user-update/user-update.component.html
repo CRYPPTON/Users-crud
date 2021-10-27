@@ -1,4 +1,4 @@
-<div class="container col-md-12 text-center">
+<div class="container col-md-12 text-center" [ngClass]="{'dark-theme':themeService.isDark}">
   <h2>{{ "updateUser.title" | translate }}</h2>
   <div>
     <app-user-form [form]="updateUserForm"></app-user-form>

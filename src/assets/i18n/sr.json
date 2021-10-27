@@ -4,7 +4,12 @@
     "create": "Kreiraj",
     "update": "Ažuriraj",
     "cancel": "Odbaci",
-    "delete": "Izbriši"
+    "delete": "Izbriši",
+    "settings": "Podešavanja",
+    "back": "Nazad",
+    "logout": "Odjavi se",
+    "dark-mode": "Taman režim",
+    "login": "Prijava"
   },
   "createUser": {
     "title": "Kreiraj novog korisnika"
@@ -21,14 +26,17 @@
     "email": "Email",
     "created": "Napravljen",
     "action": "Uradi",
-    "items per page": "items per page"
+    "items per page": "items per page",
+    "password": "Lozinka"
   },
   "search": "Pretraga",
   "error": {
     "InValidEmail": "Neispravan email",
-    "requiredEmail": "Potrebna je email adresa",
+    "requiredEmail": "Unesite email adresu",
     "requiredName": "Unesite Ime",
-    "NoDataFound": "Nema Pronadjenih Korisnika"
+    "NoDataFound": "Nema Pronadjenih Korisnika",
+    "passwordRequiredSixChar": "Lozinka zahteva 6 karaktera",
+    "passwordRequired": "Unesite Lozinku"
   },
   "PAGINATOR": {
     "ITEMS_PER_PAGE": "Korisnika po strani",

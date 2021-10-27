@@ -103,11 +103,12 @@
     </div>
   </div>
   <div class="text-center p-3">
-    <button mat-raised-button color="primary" (click)="onCreate()">
+    <button class="margin-right" mat-raised-button color="accent" (click)="onCreate()">
       {{ "buttons.create" | translate }}
+    </button>
+    <button mat-raised-button color="primary" (click)="onSettings()">
+      {{ "buttons.settings" | translate }}
     </button>
   </div>
 </div>
-<button mat-raised-button color="primary" (click)="onSettings()">
-  Settings
-</button>
+

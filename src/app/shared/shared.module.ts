@@ -4,17 +4,23 @@ import { SnackBarMessageComponent } from './components/snack-bar-message/snack-b
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     MaterialModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    TranslateModule
   ],
   exports: [
     MaterialModule,
     CommonModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FormsModule,
+    TranslateModule
   ],
   declarations: [
     SnackBarMessageComponent,

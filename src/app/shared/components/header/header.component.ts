@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from  'rxjs';
-import { AuthService, LanguageServiceService } from 'src/app/core/services';
+import { AuthService, LanguageServiceService, ThemeService } from 'src/app/core/services';
 import { Language } from '../../models';
 
 @Component({
@@ -15,11 +15,13 @@ export class HeaderComponent implements OnInit {
   public otherLanguages: Language[];
   public languages = this.languageService.getLanguages();
   isAuth: boolean;
+  isDark: boolean;
 
   constructor(
     private languageService: LanguageServiceService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public themeService: ThemeService
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +35,8 @@ export class HeaderComponent implements OnInit {
     this.otherLanguages = this.languageService.getUnselectedLanguages();
   }
 
-  public langChanged(event: any) {
-    const selectedValue = event.value;
-    this.selectedLanguage = selectedValue;
+  public langChanged(language: Language) {
+    this.selectedLanguage = language;
     this.languageService.setLanguage(this.selectedLanguage.code);
     this.otherLanguages = this.languageService.getUnselectedLanguages();
   }

@@ -1,26 +1,47 @@
-<header *ngIf="selectedLanguage">
-  <mat-toolbar color="primary">
-    <div class="col-md-9">
-      User Crude app
-    </div>
-    
-      <div class="col-md-2" *ngIf="isAuth">
-        <button mat-raised-button color="warn" (click)="onLogout()">logout</button>
-      </div>
-      <div class="select col-md-3">
-      <mat-select
-        [(value)]="selectedLanguage"
-        (selectionChange)="langChanged($event)"
+<header
+  *ngIf="selectedLanguage"
+  [ngClass]="{ 'dark-theme': themeService.isDark }"
+>
+  <mat-toolbar color="primary" class="d-flex justify-content-between">
+    <div >User Crude app</div>
+
+    <div >
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
       >
-        <mat-option
-          *ngFor="let language of languages; let i = index"
-          [value]="language"
-          [style.display]="selectedLanguage.code !== language.code ? 'block' : 'none'"
-        >
-          {{ language.name }}
-        </mat-option>
-      </mat-select>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <!-- language -->
+        <button mat-menu-item [matMenuTriggerFor]="selectLanguages">
+          <mat-icon>language</mat-icon>
+          <span>{{selectedLanguage.name}}</span>
+        </button>
+
+        <!-- theme -->
+        <button mat-menu-item>
+          <mat-slide-toggle [(ngModel)]="themeService.isDark"
+            >{{ "buttons.dark-mode" | translate }}</mat-slide-toggle
+          >
+        </button>
+
+        <!-- logout -->
+        <button color="warn" mat-menu-item (click)="onLogout()">
+          <mat-icon>logout</mat-icon>
+          <span>{{ "buttons.logout" | translate }}</span>
+        </button>
+
+      </mat-menu>
+
+      <mat-menu #selectLanguages="matMenu">
+          <div *ngFor="let language of otherLanguages">
+            <button mat-menu-item (click)="langChanged(language)" 
+          >{{language.name}}</button>
+          </div>
+          
+      </mat-menu>
     </div>
   </mat-toolbar>
-  
 </header>
