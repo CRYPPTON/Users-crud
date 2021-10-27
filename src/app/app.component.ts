@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ThemeService } from './core/services';
 
 @Component({
@@ -8,8 +7,6 @@ import { ThemeService } from './core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  openSideNav: boolean = true;
-  showFiller = false;
   constructor(
     public themeService: ThemeService,
   ) { }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService, LanguageServiceService, ThemeService } from 'src/app/core/services';
@@ -29,12 +29,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.router.events.subscribe(val => {
       if (val instanceof RoutesRecognized) {
         const titleFromRouter = val.state.root.firstChild?.routeConfig?.path?.toUpperCase();
         const key = `title.${titleFromRouter}`;
-        this.title = this.translateService.instant(key)
+        this.title = this.translateService.instant(key);
       }
     });
 
