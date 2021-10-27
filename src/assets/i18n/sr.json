@@ -51,5 +51,10 @@
     "PUT": "Uspesno azuriranje korisnika",
     "DELETE": "Uspesno brisanje korisnika",
     "PATCH": "Uspesno azuriranje korisnika"
+  },
+  "title": {
+    "USERS": "Lista Korisnika",
+    "SETTINGS": "Podesavanja",
+    "AUTH": "Registracija"
   }
 }

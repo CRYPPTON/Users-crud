@@ -20,12 +20,12 @@ import { TranslateModule } from '@ngx-translate/core';
     HeaderComponent,
     FooterComponent,
     FormsModule,
-    TranslateModule
+    TranslateModule,
   ],
   declarations: [
     SnackBarMessageComponent,
      HeaderComponent,
-     FooterComponent
+     FooterComponent,
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,4 @@
-<div class="container" style="min-width: 424px">
+<div class="container"  style="min-width: 424px;">
   <div class="text-center p-3">
     <mat-form-field>
       <mat-label>{{ "search" | translate }}</mat-label>
@@ -68,7 +68,6 @@
           <button
             mat-raised-button
             (click)="onDelete($event, user.id)"
-            class="delete-btn"
             color="warn"
           >
             {{ "buttons.delete" | translate }}
@@ -105,9 +104,6 @@
   <div class="text-center p-3">
     <button class="margin-right" mat-raised-button color="accent" (click)="onCreate()">
       {{ "buttons.create" | translate }}
-    </button>
-    <button mat-raised-button color="primary" (click)="onSettings()">
-      {{ "buttons.settings" | translate }}
     </button>
   </div>
 </div>

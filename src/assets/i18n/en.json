@@ -51,6 +51,10 @@
     "PUT": "User is successufully added",
     "DELETE": "User is successufully added",
     "PATCH": "User is successufully added"
+  },
+  "title": {
+    "USERS": "Users List",
+    "SETTINGS": "Settings",
+    "AUTH": "Login"
   }
-  
 }

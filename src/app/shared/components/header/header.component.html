@@ -3,15 +3,17 @@
   [ngClass]="{ 'dark-theme': themeService.isDark }"
 >
   <mat-toolbar color="primary" class="d-flex justify-content-between">
-    <div >User Crude app</div>
-
+    <button mat-icon-button (click)="openSideBar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div>{{title}}</div>
     <div >
       <button
         mat-icon-button
         [matMenuTriggerFor]="menu"
         aria-label="Example icon-button with a menu"
       >
-        <mat-icon>menu</mat-icon>
+        <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <!-- language -->

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ThemeService } from './core/services';
 
 @Component({
@@ -8,10 +8,10 @@ import { ThemeService } from './core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  openSideNav: boolean = true;
+  showFiller = false;
   constructor(
-    public themeService: ThemeService
-  ) {
-  }
+    public themeService: ThemeService,
+  ) { }
 
 }
