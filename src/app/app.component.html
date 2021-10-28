@@ -1,6 +1,26 @@
-<app-header></app-header>
-<div class="containter p-5">
-  <router-outlet></router-outlet>
-  <app-loader></app-loader>
+<div [ngClass]="{ 'dark-theme': themeService.isDark }">
+  <app-header (openSideBarEvant)="drawer.toggle()"></app-header>
+  <mat-drawer-container autosize class="side-nav" >
+    
+    <mat-drawer #drawer class="side-bar" class="nav-side" mode="push">
+      <div>
+        <button mat-icon-button>
+          <a [routerLink]="['/users']">Users</a>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button>
+          <a [routerLink]="['/settings']">Settings</a>
+        </button>
+      </div>
+      <div></div>
+    </mat-drawer>
+    <div class="containter p-5 v-scroll">
+      <router-outlet></router-outlet>
+      <app-loader></app-loader>
+    </div>
+    
+    
+  </mat-drawer-container>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

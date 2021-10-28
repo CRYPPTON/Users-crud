@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserFormService, UserHttpService } from 'src/app/core/services';
+import { ThemeService, UserFormService, UserHttpService } from 'src/app/core/services';
 import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -14,7 +14,8 @@ export class CreateUserComponent implements OnInit {
 
   constructor(
     private userHttp: UserHttpService, private userFormService: UserFormService,
-    private dialogRef: MatDialogRef<boolean>
+    private dialogRef: MatDialogRef<boolean>,
+    public themeService: ThemeService
   ) {
     this.createUserForm = this.userFormService.getEmptyForm();
   }

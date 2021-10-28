@@ -1,8 +1,14 @@
-<h1 mat-dialog-title>{{ 'deleteUser.title' | translate }}</h1>
-<div mat-dialog-content class="mat-typography">
-  {{ 'deleteUser.content' | translate }}
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button color="secondary" (click)="close(false)">{{ 'buttons.cancel' | translate }}</button>
-  <button mat-raised-button color="primary" (click)="close(true)">{{ 'buttons.delete' | translate }}</button>
+<div [ngClass]="{ 'dark-theme': themeService.isDark }">
+  <h1 mat-dialog-title>{{ "deleteUser.title" | translate }}</h1>
+  <div mat-dialog-content class="mat-typography">
+    {{ "deleteUser.content" | translate }}
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="secondary" (click)="close(false)">
+      {{ "buttons.cancel" | translate }}
+    </button>
+    <button mat-raised-button color="primary" (click)="close(true)">
+      {{ "buttons.delete" | translate }}
+    </button>
+  </div>
 </div>

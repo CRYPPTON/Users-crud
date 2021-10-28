@@ -4,7 +4,12 @@
     "create": "Create",
     "update": "Update",
     "cancel": "Cancel",
-    "delete": "Delete"
+    "delete": "Delete",
+    "settings": "Settings",
+    "back": "Back",
+    "logout": "Logout",
+    "dark-mode": "Dark mode",
+    "login": "Login"
   },
   "createUser": {
     "title": "Create new user"
@@ -21,14 +26,17 @@
     "email": "Email",
     "created": "Created",
     "action": "Action",
-    "items per page": "items per page"
+    "items per page": "items per page",
+    "password": "Password"
   },
   "search": "Search",
   "error": {
     "InValidEmail": "InValid email",
     "requiredEmail": "Email is required",
     "requiredName": "Enter Name",
-    "NoDataFound": "No Data Found"
+    "NoDataFound": "No Data Found",
+    "passwordRequiredSixChar": "Password is required 6 character",
+    "passwordRequired": "Password is required"
   },
   "PAGINATOR": {
     "ITEMS_PER_PAGE": "Items per page",
@@ -43,5 +51,10 @@
     "PUT": "User is successufully added",
     "DELETE": "User is successufully added",
     "PATCH": "User is successufully added"
+  },
+  "title": {
+    "USERS": "Users List",
+    "SETTINGS": "Settings",
+    "AUTH": "Login"
   }
 }

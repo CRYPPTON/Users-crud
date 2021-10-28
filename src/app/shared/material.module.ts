@@ -12,6 +12,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
     imports: [
@@ -27,7 +30,10 @@ import { MatSelectModule } from '@angular/material/select';
         MatDialogModule,
         MatSnackBarModule,
         MatToolbarModule,
-        MatSelectModule
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatMenuModule,
+        MatSidenavModule
     ],
     exports: [
         MatSliderModule,
@@ -42,7 +48,10 @@ import { MatSelectModule } from '@angular/material/select';
         MatDialogModule,
         MatSnackBarModule,
         MatToolbarModule,
-        MatSelectModule
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatMenuModule,
+        MatSidenavModule
     ]
 })
 

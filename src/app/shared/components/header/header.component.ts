@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from  'rxjs';
-import { AuthService, LanguageServiceService } from 'src/app/core/services';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router, RoutesRecognized } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService, LanguageServiceService, ThemeService } from 'src/app/core/services';
 import { Language } from '../../models';
 
 @Component({
@@ -15,14 +15,28 @@ export class HeaderComponent implements OnInit {
   public otherLanguages: Language[];
   public languages = this.languageService.getLanguages();
   isAuth: boolean;
+  public isDark: boolean;
+  public title: string | undefined;
+  @Output() openSideBarEvant = new EventEmitter<boolean>();
 
   constructor(
     private languageService: LanguageServiceService,
     private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    public themeService: ThemeService,
+    private translateService: TranslateService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.router.events.subscribe(val => {
+      if (val instanceof RoutesRecognized) {
+        const titleFromRouter = val.state.root.firstChild?.routeConfig?.path?.toUpperCase();
+        const key = `title.${titleFromRouter}`;
+        this.title = this.translateService.instant(key);
+      }
+    });
+
     this.authService.isAuth.subscribe(
       (res) => {
         this.isAuth = res;
@@ -33,9 +47,8 @@ export class HeaderComponent implements OnInit {
     this.otherLanguages = this.languageService.getUnselectedLanguages();
   }
 
-  public langChanged(event: any) {
-    const selectedValue = event.value;
-    this.selectedLanguage = selectedValue;
+  public langChanged(language: Language) {
+    this.selectedLanguage = language;
     this.languageService.setLanguage(this.selectedLanguage.code);
     this.otherLanguages = this.languageService.getUnselectedLanguages();
   }
@@ -45,5 +58,10 @@ export class HeaderComponent implements OnInit {
     this.isAuth = false;
     this.authService.logout();
   }
+
+  openSideBar() {
+    this.openSideBarEvant.emit(true);
+  }
+
 
 }

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UserFormService, UserHttpService } from 'src/app/core/services';
+import { ThemeService, UserFormService, UserHttpService } from 'src/app/core/services';
 import { User } from 'src/app/shared/models';
 import { FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -19,6 +19,7 @@ export class UserUpdateComponent implements OnInit {
     private dialogRef: MatDialogRef<boolean>,
     private userFormService: UserFormService,
     @Inject(MAT_DIALOG_DATA) public data: User,
+    public themeService: ThemeService
   ) {
     this.updateUserForm = this.userFormService.getEmptyForm();
   }
