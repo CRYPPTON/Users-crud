@@ -17,7 +17,7 @@ export class SnackBarService {
     this.snackBar.openFromComponent(SnackBarMessageComponent, {
       data: message,
       panelClass: snackClass,
-      duration: 5000,
+      duration: 5000
     });
   }
 
