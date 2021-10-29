@@ -6,9 +6,13 @@ import { ThemeService } from './core/services';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
+
 export class AppComponent {
+
   constructor(
-    public themeService: ThemeService,
+    public themeService: ThemeService
   ) { }
 
 }

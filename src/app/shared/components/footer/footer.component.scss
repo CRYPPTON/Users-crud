@@ -1,7 +1,12 @@
-footer{
-    position:fixed;
-    bottom:0px;
-    background-color:pink;
-    width:100%;
-    z-index: 1; 
-    }
+footer {
+  position: fixed;
+  bottom: 0px;
+  background-color: pink;
+  width: 100%;
+  z-index: 1;
+}
+
+.footer-content {
+    font-size: medium;
+    margin: auto;
+}

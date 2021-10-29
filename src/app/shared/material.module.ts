@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatSelectModule,
         MatSlideToggleModule,
         MatMenuModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatGridListModule
     ],
     exports: [
         MatSliderModule,
@@ -51,7 +53,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatSelectModule,
         MatSlideToggleModule,
         MatMenuModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatGridListModule
     ]
 })
 

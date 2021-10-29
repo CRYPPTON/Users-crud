@@ -54,7 +54,11 @@
   },
   "title": {
     "USERS": "Lista Korisnika",
-    "SETTINGS": "Podesavanja",
+    "SETTINGS": "Podešavanja",
     "AUTH": "Registracija"
+  },
+  "settings": {
+    "change-mode": "Promeni režim",
+    "choose-lang": "Odaberite Jezik"
   }
 }
