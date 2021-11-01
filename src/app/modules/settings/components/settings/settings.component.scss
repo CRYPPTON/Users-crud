@@ -15,7 +15,7 @@
 .span-description {
   height: 30px;
   margin-right: 20px;
-  float: right;
+  float: left;
 }
 
 .span-action {
@@ -26,4 +26,9 @@
 .mat-icon {
   vertical-align: middle;
   margin-right: 2px;
+}
+
+.settings-description-wrap {
+  width: 170px;
+  float: right;
 }

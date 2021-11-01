@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  UserListStateParams } from 'src/app/shared/models';
+import { UserListStateParams } from 'src/app/shared/models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +15,14 @@ export class UserListStateComponentService {
   };
 
   constructor() { }
+
+  resetState() {
+    this.params = {
+      search: '',
+      direction: '',
+      order: '',
+      page: 1,
+      pageSize: 10
+    };
+  }
 }

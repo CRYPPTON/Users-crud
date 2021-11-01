@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ThemeService } from './core/services';
+import { MyRoute } from './shared/models';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +9,19 @@ import { ThemeService } from './core/services';
   styleUrls: ['./app.component.scss']
 })
 
-
-
 export class AppComponent {
 
-  constructor(
-    public themeService: ThemeService
-  ) { }
+  routesList: MyRoute[];
 
+  constructor(
+    public themeService: ThemeService,
+    private routes: Router
+  ) {
+    this.getRoutes();
+  }
+
+  getRoutes() {
+    this.routesList = this.routes.config
+    .filter(route => route.path && route.path !== 'auth');
+  }
 }

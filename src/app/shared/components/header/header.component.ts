@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router, RoutesRecognized } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService, LanguageServiceService, ThemeService } from 'src/app/core/services';
+import { AuthService, LanguageServiceService, ThemeService, UserListStateComponentService } from 'src/app/core/services';
 import { Language } from '../../models';
 
 @Component({
@@ -27,7 +27,8 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     public themeService: ThemeService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private userListState: UserListStateComponentService
   ) {
   }
 
@@ -61,14 +62,15 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-    if(this.sideBar.opened) {
+    if (this.sideBar.opened) {
       this.sideBar.toggle();
     }
     this.router.navigate(['/auth']);
     this.authService.logout();
+    this.userListState.resetState();
   }
 
   toggleSideBar() {
-   this.toggleSideBarEvant.emit(true);
+    this.toggleSideBarEvant.emit(true);
   }
 }

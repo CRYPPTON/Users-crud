@@ -1,10 +1,12 @@
 <div class="settings containter text-center">
   <div class="row">
     <div style="padding-top: 20px" class="col-sm float-right">
-      <span class="span-description"
+      <div class="settings-description-wrap">
+        <span class="span-description"
         ><mat-icon>language</mat-icon>
-        {{ "settings.choose-lang" | translate }} |</span
-      >
+        {{ "settings.choose-lang" | translate }}</span
+      >  
+      </div>
     </div>
     <div class="col-sm">
       <span class="span-action">
@@ -28,10 +30,13 @@
   </div>
   <div class="row">
     <div class="col-sm">
-      <span class="span-description"
+      <div class="settings-description-wrap">
+        <span class="span-description"
         ><mat-icon class="">bedtime</mat-icon>
-        {{ "settings.change-mode" | translate }} |
-      </span>
+        {{ "settings.change-mode" | translate }}
+        </span>
+      </div>
+      
     </div>
     <div class="col-sm">
       <span class="span-toggle span-action"

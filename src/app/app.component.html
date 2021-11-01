@@ -5,27 +5,19 @@
   ></app-header>
   <mat-drawer-container autosize class="side-nav">
     <mat-drawer #drawer class="side-bar" class="nav-side" mode="push">
-      <div class="item-sidebar">
-        <a [routerLink]="['/users']"
-          ><mat-icon>table_chart</mat-icon>
-          <span class="sideNav-description">{{
-            "title.USERS" | translate
-          }}</span></a
-        >
-      </div>
-      <div class="item-sidebar">
-        <a [routerLink]="['/settings']"
-          ><mat-icon>settings</mat-icon>
-          <span class="sideNav-description">{{
-            "title.SETTINGS" | translate
-          }}</span></a
-        >
+      <div class="item-sidebar" *ngFor="let route of routesList">
+         <a [routerLink]="route.path" (click)="drawer.close()"
+          ><mat-icon>{{route.icon}}</mat-icon>
+          <span class="sideNav-description">
+            {{ "title." + route.path?.toUpperCase() | translate }}
+          </span></a
+        > 
       </div>
     </mat-drawer>
     <div class="containter app p-5 v-scroll">
       <router-outlet></router-outlet>
-      <app-loader></app-loader>
     </div>
   </mat-drawer-container>
   <app-footer></app-footer>
 </div>
+<app-loader></app-loader>
