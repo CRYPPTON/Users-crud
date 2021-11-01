@@ -48,13 +48,17 @@
   },
   "SUCCESS": {
     "POST": "User is successufully added",
-    "PUT": "User is successufully added",
-    "DELETE": "User is successufully added",
-    "PATCH": "User is successufully added"
+    "PUT": "User is successufully updated",
+    "DELETE": "User is successufully deleted",
+    "PATCH": "User is successufully updated"
   },
   "title": {
     "USERS": "Users List",
     "SETTINGS": "Settings",
     "AUTH": "Login"
+  },
+  "settings": {
+    "change-mode": "Change Mode",
+    "choose-lang": "Choose Language"
   }
 }

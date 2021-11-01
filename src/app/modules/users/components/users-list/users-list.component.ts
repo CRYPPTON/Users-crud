@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit {
   userListParam = this.userStateService.params;
 
   ngOnInit(): void {
-    this.getUsersFromServer();
+    //this.getUsersFromServer();
   }
 
   setPage(event: PageEvent) {

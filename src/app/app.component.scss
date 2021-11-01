@@ -4,6 +4,33 @@
 }
 
 .nav-side {
-  padding: 20px;
-  width: 160px;
+  margin-top: 65px;
+  width: 200px;
+}
+
+.item-sidebar{
+  padding: 16px;
+  width: 100%;
+  text-align: center;
+  font-size: larger;  
+  font-weight: 400;
+}
+
+.item-sidebar:hover{ 
+  color: white;
+  background-color: rgb(206, 206, 241);
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.sideNav-description {
+  margin-left: 10px;
+}
+
+a {
+  color:black;
+  height: 22px;
+  text-decoration: none;
 }

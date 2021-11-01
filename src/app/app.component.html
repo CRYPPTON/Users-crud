@@ -1,26 +1,23 @@
 <div [ngClass]="{ 'dark-theme': themeService.isDark }">
-  <app-header (openSideBarEvant)="drawer.toggle()"></app-header>
-  <mat-drawer-container autosize class="side-nav" >
-    
+  <app-header
+    [sideBar]="drawer"
+    (toggleSideBarEvant)="drawer.toggle()"
+  ></app-header>
+  <mat-drawer-container autosize class="side-nav">
     <mat-drawer #drawer class="side-bar" class="nav-side" mode="push">
-      <div>
-        <button mat-icon-button>
-          <a [routerLink]="['/users']">Users</a>
-        </button>
+      <div class="item-sidebar" *ngFor="let route of routesList">
+         <a [routerLink]="route.path" (click)="drawer.close()"
+          ><mat-icon>{{route.icon}}</mat-icon>
+          <span class="sideNav-description">
+            {{ "title." + route.path?.toUpperCase() | translate }}
+          </span></a
+        > 
       </div>
-      <div>
-        <button mat-icon-button>
-          <a [routerLink]="['/settings']">Settings</a>
-        </button>
-      </div>
-      <div></div>
     </mat-drawer>
-    <div class="containter p-5 v-scroll">
+    <div class="containter app p-5 v-scroll">
       <router-outlet></router-outlet>
-      <app-loader></app-loader>
     </div>
-    
-    
   </mat-drawer-container>
   <app-footer></app-footer>
 </div>
+<app-loader></app-loader>
