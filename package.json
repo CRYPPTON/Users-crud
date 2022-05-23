@@ -23,6 +23,7 @@
     "@angular/router": "~12.2.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "breadcrumb-lib": "^0.0.0-watch",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsdoc": "^36.1.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
